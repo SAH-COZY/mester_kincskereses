@@ -2,9 +2,11 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+webhookLink = "WEBHOOK_URL"
+
 function sendToDiscord(name, message)
 	if message == nil or message == '' then return FALSE end
-	PerformHttpRequest(Config.discord, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
+	PerformHttpRequest(webhookLink, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
   end
 
 RegisterServerEvent('mesterkincspenzsok')
